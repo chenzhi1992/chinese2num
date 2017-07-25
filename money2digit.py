@@ -1,5 +1,5 @@
 # coding:utf-8
-# author: Tian
+# author: chenzhi
 
 import time
 
@@ -90,15 +90,15 @@ class trans_money():
                 self.num_money.append(num1)
                 _num -= (num1 * _n)
             self.num_money.append(_num)
-        # _num = int(_str)
-        # for i in range(num):
-        #     _n = pow(10, num - i)
-        #     num1 = int(_num / _n)  # 千万位的数字
-        #     self.num_money.append(num1)
-        #     _num -= (num1 * _n)
-        # self.num_money.append(_num)
 
     def fact(self, a, m_str):
+        '''
+        该功能的主要函数.
+        通过递归的方式来汉字钱根据关键字(万,千...)进行划分,然后进行转换
+        :param a:
+        :param m_str:
+        :return:
+        '''
         if a < 0:
             self.char2digit(m_str)
         else:
@@ -238,18 +238,6 @@ class trans_money():
         start = time.time()
         num = 4
         liststr = list(m_str)
-        # while True:
-        #     try:
-        #         liststr.remove('块')
-        #     except ValueError:
-        #         break
-        #
-        # while True:
-        #     try:
-        #         liststr.remove('元')
-        #     except ValueError:
-        #         break
-
         money = self.integrate(num, liststr)
         money = float(money)
         end = time.time()
@@ -258,20 +246,9 @@ class trans_money():
 
 if __name__ == '__main__':
     trans = trans_money()
-    count = 0
-    for line in open('money'):
-        # count += 1
-        # if count % 2 == 0:
-        money_str = line.strip().split(':')[1]
-        # money_str = ''.join(moneylist)
-        print(money_str)
-        money = trans.mainfunc(money_str)
-        print('isRightNum is %d' % trans.isRightNum)
-        print(money)
-        # else:
-        #     pass
-    # money_str = '1万'
-    # money_str = list(money_str)
-    # money = trans.mainfunc(money_str)
-    # print(money)
-    # print('isRightNum is %d' % trans.isRightNum)
+    
+    money_str = '1万块零1毛'
+    money_str = list(money_str)
+    money = trans.mainfunc(money_str)
+    print(money)
+    print('isRightNum is %d' % trans.isRightNum)
