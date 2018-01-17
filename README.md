@@ -1,5 +1,6 @@
 # chinese2num
 汉字钱数目转成阿拉伯数字
+
 支持Python3
 
 例子1:
